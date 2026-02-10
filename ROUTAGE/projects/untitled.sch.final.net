@@ -1,0 +1,52 @@
+* SpiceNetList
+* 
+* Exported from untitled.sch at 18/03/2022 00:36
+* 
+* EAGLE Version 9.6.2 Copyright (c) 1988-2020 Autodesk, Inc.
+* 
+.TEMP=25.0
+
+* --------- .OPTIONS ---------
+.OPTIONS ABSTOL=1e-12 GMIN=1e-12 PIVREL=1e-3 ITL1=100 ITL2=50 PIVTOL=1e-13 RELTOL=1e-3 VNTOL=1e-6 CHGTOL=1e-15 ITL4=10 METHOD=TRAP SRCSTEPS=0 TRTOL=7 NODE
+
+* --------- .PARAMS ---------
+
+* --------- devices ---------
+R_R2 N_4 V2 1 
+V_VCUR_1 VT N_2 
+R_R1 V2 N_2 1 
+V_VCC VT 0 5V 
+M_M1 N_4 VT 0 0 NFET 
+
+* --------- models ---------
+
+* (model found in library)
+
+**********************
+* Autodesk EAGLE - Spice Model File
+* Date: 9/17/17
+* basic nfet intrinsic model
+**********************
+.MODEL NFET NMOS (LEVEL=3)
+
+
+* --------- simulation ---------
+.control
+set filetype=ascii
+DC V_VCC 0 5 0.01 
+write untitled.sch.sim V(V2) V(VT) I(V_VCC) I(V_VCUR_1)
+.endc
+
+
+
+.END
+
+
+
+
+
+
+
+
+
+
